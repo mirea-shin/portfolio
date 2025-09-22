@@ -1,0 +1,13 @@
+{
+  "name": "portfolio-project",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "echo 'Run yarn dev:client, yarn dev:admin, yarn dev:server separately'",
+    "dev:client": "yarn workspace client dev",
+    "dev:admin": "yarn workspace admin dev",
+    "dev:server": "yarn workspace server dev"
+  }
+}
