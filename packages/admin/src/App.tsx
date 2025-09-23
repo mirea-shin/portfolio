@@ -1,5 +1,12 @@
+import { BrowserRouter } from 'react-router-dom';
+import AdminRoutes from './routes';
+
 function App() {
-  return <div className="bg-blue-500">dddd</div>;
+  return (
+    <BrowserRouter>
+      <AdminRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;

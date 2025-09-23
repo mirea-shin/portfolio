@@ -1,5 +1,12 @@
+import { BrowserRouter } from 'react-router-dom';
+import ClientRoutes from './routes';
+
 function App() {
-  return <div className="bg-red-300">안녕</div>;
+  return (
+    <BrowserRouter>
+      <ClientRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
