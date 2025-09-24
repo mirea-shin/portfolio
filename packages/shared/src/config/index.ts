@@ -1,1 +1,1 @@
-export const TEMP = '';
+export const BASE_URL = 'http://localhost:3000';

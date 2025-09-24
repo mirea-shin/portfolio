@@ -1,14 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
 import { NotFoundPage } from 'ui-components';
+import { AboutPage, AboutDetailPage } from '../pages';
 
 export default function AdminRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<NotFoundPage />} />
-      <Route
-        path="/admin"
-        element={<div className="border border-red-300">admin</div>}
-      />
+      <Route path="/" element={<div>ADMIN</div>} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/about/:id" element={<AboutDetailPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

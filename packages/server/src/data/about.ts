@@ -2,7 +2,7 @@ let FAKE_ABOUT = [
   {
     id: 1,
     title: 'About Me v3',
-    content: "<p>Hi, I'm Mirea, a frontend developer...</p>",
+    content: "Hi, I'm Mirea, a frontend developer..",
     isFeatured: true,
     createdAt: '2025-09-22T16:00:00Z',
     updatedAt: '2025-09-22T16:20:00Z',
@@ -11,7 +11,7 @@ let FAKE_ABOUT = [
   {
     id: 2,
     title: 'About Me v4',
-    content: "<h1>Hi, I'm Mirea, a frontend developer!!!!!</h1>",
+    content: "Hi, I'm Mirea, a frontend developer!!!!!",
     isFeatured: false,
     createdAt: '2025-09-22T17:00:00Z',
     updatedAt: '2025-09-22T17:20:00Z',
