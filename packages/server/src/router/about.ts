@@ -4,6 +4,8 @@ import * as AboutController from '../controller/about';
 
 const about = express.Router();
 
+// TODO /featured /:id/select => 네이밍 통합하기
+
 about.get('/', AboutController.getAll);
 about.get('/featured', AboutController.getFeatured);
 about.get('/:id', AboutController.getById);

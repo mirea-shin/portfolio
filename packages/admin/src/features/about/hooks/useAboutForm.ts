@@ -9,17 +9,12 @@ export default function useAboutForm() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (data: AboutRequest, id?: number) => {
+  const onSubmit = async (data: AboutRequest, id: string | null) => {
     setLoading(true);
 
     try {
-      if (id) {
-        await postAbout(data);
-        navigate('/about');
-      } else {
-        if (!id) return;
-        await putAbout(data, id.toString());
-      }
+      id ? await putAbout(data, id) : await postAbout(data);
+      navigate('/about');
     } catch (err) {
       // todo something
     } finally {
@@ -27,11 +22,12 @@ export default function useAboutForm() {
     }
   };
 
-  const fetchDeleteAbout = async (id: number) => {
+  const fetchDeleteAbout = async (id: string) => {
     setLoading(true);
     try {
       const result = await deleteAbout(id);
       console.log(result.data);
+      navigate('/about');
     } catch (err) {
     } finally {
       setLoading(false);

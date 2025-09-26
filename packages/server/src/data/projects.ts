@@ -1,24 +1,4 @@
-export interface ProjectRequestTEST {
-  title: string;
-  description: string;
-  techStack: string[];
-  startDate: string;
-  projectType: 'personal' | 'work';
-  status: 'draft' | 'completed' | 'ongoing';
-
-  githubLink?: string;
-  endDate?: string;
-  liveLink?: string;
-  thumbnail?: string;
-  images?: string[];
-}
-
-// Project 타입도 옵셔널 필드를 유지
-export type Project = ProjectRequestTEST & {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-};
+import { Project, ProjectRequest } from 'shared';
 
 let FAKE_PROJECTS: Project[] = [
   {
@@ -43,7 +23,7 @@ export const findAll = () => FAKE_PROJECTS;
 export const findById = (id: string) =>
   FAKE_PROJECTS.find((project) => project.id === id);
 
-export const create = (parsedData: ProjectRequestTEST): Project => {
+export const create = (parsedData: ProjectRequest): Project => {
   const newProject: Project = {
     ...parsedData,
     id: (FAKE_PROJECTS.length + 1).toString(),
@@ -57,7 +37,7 @@ export const create = (parsedData: ProjectRequestTEST): Project => {
   return newProject;
 };
 
-export const update = (id: string, parsedData: ProjectRequestTEST) => {
+export const update = (id: string, parsedData: ProjectRequest) => {
   let updatedProject;
 
   FAKE_PROJECTS = FAKE_PROJECTS.map((project) => {

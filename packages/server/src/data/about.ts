@@ -1,6 +1,8 @@
+import { AboutRequest } from 'shared';
+
 let FAKE_ABOUT = [
   {
-    id: 1,
+    id: '1',
     title: 'About Me v3',
     content: "Hi, I'm Mirea, a frontend developer..",
     isFeatured: true,
@@ -9,7 +11,7 @@ let FAKE_ABOUT = [
   },
 
   {
-    id: 2,
+    id: '2',
     title: 'About Me v4',
     content: "Hi, I'm Mirea, a frontend developer!!!!!",
     isFeatured: false,
@@ -21,15 +23,15 @@ let FAKE_ABOUT = [
 export const findAll = () => FAKE_ABOUT;
 
 export const findById = (id: string) =>
-  FAKE_ABOUT.find((about) => about.id === Number(id));
+  FAKE_ABOUT.find((about) => about.id === id);
 
 export const getFeatured = () =>
   FAKE_ABOUT.find((about) => about.isFeatured === true);
 
-export const create = (parsedData: { content: string; title: string }) => {
+export const create = (parsedData: AboutRequest) => {
   const newAbout = {
     ...parsedData,
-    id: FAKE_ABOUT.length + 1,
+    id: (FAKE_ABOUT.length + 1).toString(),
     isFeatured: false,
     createdAt: new Date().toISOString(),
     updatedAt: '',
@@ -44,7 +46,7 @@ export const setFeatured = (id: string) => {
   let selectedAbout;
 
   FAKE_ABOUT = FAKE_ABOUT.map((about) => {
-    if (about.id === Number(id)) {
+    if (about.id === id) {
       selectedAbout = {
         ...about,
         isFeatured: true,
@@ -60,17 +62,15 @@ export const setFeatured = (id: string) => {
   return selectedAbout;
 };
 
-export const update = (
-  id: string,
-  parsedData: { content: string; title: string }
-) => {
+export const update = (id: string, parsedData: AboutRequest) => {
   let updatedAbout;
 
+  console.log(parsedData);
   FAKE_ABOUT = FAKE_ABOUT.map((about) => {
-    if (about.id === Number(id)) {
+    if (about.id === id) {
       updatedAbout = {
-        ...parsedData,
         ...about,
+        ...parsedData,
         updatedAt: new Date().toISOString(),
       };
       return updatedAbout;
@@ -83,5 +83,5 @@ export const update = (
 };
 
 export const remove = (id: string) => {
-  FAKE_ABOUT = FAKE_ABOUT.filter((about) => about.id !== Number(id));
+  FAKE_ABOUT = FAKE_ABOUT.filter((about) => about.id !== id);
 };
