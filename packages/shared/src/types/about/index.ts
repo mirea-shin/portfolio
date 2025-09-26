@@ -3,7 +3,7 @@ export interface AboutRequest {
   content: string;
 }
 export interface About extends AboutRequest {
-  id: number;
+  id: string;
   isFeatured: boolean;
   createdAt: string;
   updatedAt: string;
