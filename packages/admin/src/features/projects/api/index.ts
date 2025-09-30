@@ -1,17 +1,20 @@
 import { apiAdmin } from '../../../axiosConfig';
 
 import type { ProjectRequest } from 'shared';
+import { ENDPOINTS } from 'shared';
 
-export const getAllProject = async () => await apiAdmin.get('/projects');
+const { PROJECTS } = ENDPOINTS;
+
+export const getAllProject = async () => await apiAdmin.get(PROJECTS);
 
 export const getProject = async (id: string) =>
-  await apiAdmin.get(`/projects/${id}`);
+  await apiAdmin.get(`${PROJECTS}/${id}`);
 
 export const postProject = async (newProject: ProjectRequest) =>
-  await apiAdmin.post(`/projects`, newProject);
+  await apiAdmin.post(PROJECTS, newProject);
 
 export const putProject = async (editedProject: ProjectRequest, id: string) =>
-  await apiAdmin.put(`/projects/${id}`, editedProject);
+  await apiAdmin.put(`${PROJECTS}/${id}`, editedProject);
 
 export const deleteProject = async (id: string) =>
-  await apiAdmin.delete(`/projects/${id}`);
+  await apiAdmin.delete(`${PROJECTS}/${id}`);

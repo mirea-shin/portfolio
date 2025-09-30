@@ -1,6 +1,9 @@
 import { apiClient } from '../../../../axiosConfig.ts';
+import { ENDPOINTS } from 'shared';
 
-export const getProjects = async () => await apiClient('/projects');
+const { PROJECTS } = ENDPOINTS;
 
-export const getProjectDetail = async (id: string) =>
-  await apiClient(`/projects/${id}`);
+export const getAllProject = async () => await apiClient(PROJECTS);
+
+export const getProject = async (id: string) =>
+  await apiClient(`${PROJECTS}/${id}`);

@@ -1,3 +1,7 @@
 import { apiClient } from '../../../../axiosConfig.ts';
+import { ENDPOINTS } from 'shared';
 
-export const getFeaturedAbout = async () => await apiClient('/about/featured');
+const { ABOUT } = ENDPOINTS;
+
+export const getFeaturedAbout = async () =>
+  await apiClient(`${ABOUT}/featured`);
