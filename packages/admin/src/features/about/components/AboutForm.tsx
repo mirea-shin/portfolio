@@ -21,7 +21,7 @@ export default function AboutForm() {
 
   const {
     onSubmit,
-    fetchDeleteAbout,
+    onDelete,
 
     validation,
   } = useAboutForm();
@@ -59,7 +59,7 @@ export default function AboutForm() {
             <div> {about.updatedAt}</div>
 
             <div>{about.isFeatured ? '🥰' : ''}</div>
-            <button onClick={() => fetchDeleteAbout(about.id)} type="button">
+            <button onClick={() => onDelete(about.id)} type="button">
               삭제
             </button>
           </div>

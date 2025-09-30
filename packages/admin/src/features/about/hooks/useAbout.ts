@@ -13,7 +13,7 @@ export default function useAbout() {
 
   const navigate = useNavigate();
 
-  const handleAboutClick = (id: number) => {
+  const handleAboutClick = (id: string) => {
     navigate(`/about/${id}`);
   };
 

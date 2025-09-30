@@ -22,7 +22,7 @@ export default function useAboutForm() {
     }
   };
 
-  const fetchDeleteAbout = async (id: string) => {
+  const onDelete = async (id: string) => {
     setLoading(true);
     try {
       const result = await deleteAbout(id);
@@ -45,7 +45,7 @@ export default function useAboutForm() {
 
   return {
     onSubmit,
-    fetchDeleteAbout,
+    onDelete,
 
     validation,
     loading,
