@@ -56,13 +56,55 @@ export default function ProjectForm() {
         <input {...register('liveLink')} className="border" />
       </div>
 
+      <select {...register('status')} className="border w-full p-2">
+        <option value="draft">초안</option>
+        <option value="ongoing">진행중</option>
+        <option value="completed">완료</option>
+      </select>
+
+      <select {...register('projectType')} className="border w-full p-2">
+        <option value="personal">개인</option>
+        <option value="work">회사</option>
+      </select>
       <div>
-        <input type="file" />
+        <input type="file" multiple />
       </div>
 
-      <button type="button" onClick={onDelete}>
-        삭제!!
-      </button>
+      <input
+        type="file"
+        accept="image/*,video/*"
+        multiple
+        {...register('images')}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          const files = event.target.files;
+          if (!files) return;
+
+          // if (files.length > 10) {
+          //   setError('files', {
+          //     message: '최대 10개의 파일만 선택할 수 있습니다',
+          //   });
+          //   return;
+          // } else {
+          //   clearErrors('files');
+          // }
+
+          const urls = Array.from(files).map((file) =>
+            URL.createObjectURL(file)
+          );
+
+          console.log(urls);
+        }}
+      />
+
+      {project && (
+        <button
+          type="button"
+          className="bg-red-500 text-white px-4 py-2 rounded ml-2"
+          onClick={onDelete}
+        >
+          삭제
+        </button>
+      )}
       <input type="submit" />
     </form>
   );

@@ -3,18 +3,37 @@ import { Project, ProjectRequest } from 'shared';
 let FAKE_PROJECTS: Project[] = [
   {
     id: '1',
+    title: '포트폴리오 사이트',
+    description:
+      '모노레포 구조로 구현한 풀스택 포트폴리오 프로젝트입니다.\n\nReact, TypeScript, Express를 활용하여 개발했으며,\n관리자 페이지를 통해 콘텐츠를 관리할 수 있습니다.',
+    techStack: ['React', 'TypeScript', 'Express', 'Tailwind CSS'],
+    startDate: '2025-01-01',
+    endDate: '2025-03-01',
+    projectType: 'personal',
+    status: 'completed',
+    githubLink: 'https://github.com/username/portfolio',
+    liveLink: 'https://portfolio.example.com',
+    images: [
+      'https://via.placeholder.com/800x600/3B82F6/FFFFFF?text=Image+1',
+      'https://via.placeholder.com/800x600/10B981/FFFFFF?text=Image+2',
+      'https://via.placeholder.com/800x600/F59E0B/FFFFFF?text=Image+3',
+    ],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    title: 'string',
-    description: 'string',
-    techStack: ['React'],
-    startDate: '2025-09-21',
-    projectType: 'personal',
-    status: 'draft',
-    githubLink: 'http://google.com', // 있을 수도 있고 없어도 됨
-    endDate: '2025-09-03',
-    liveLink: 'http://google.com',
-    images: ['http'],
+  },
+  {
+    id: '2',
+    title: 'E-Commerce 플랫폼',
+    description: '온라인 쇼핑몰 프로젝트',
+    techStack: ['Next.js', 'Prisma', 'PostgreSQL'],
+    startDate: '2024-06-01',
+    projectType: 'work',
+    status: 'ongoing',
+    images: [
+      'https://via.placeholder.com/800x600/EF4444/FFFFFF?text=E-Commerce',
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   },
 ];
 
