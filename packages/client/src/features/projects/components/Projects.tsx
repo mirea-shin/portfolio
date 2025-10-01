@@ -1,11 +1,16 @@
 import React from 'react';
 import { useProjects } from '../hooks';
-import useProjectModal from '../hooks/useProjectModal';
+
+import { Modal } from '../../../common/modal';
 
 export default function Projects() {
-  const { projectList, loading } = useProjects();
-  const { isModalOpen, handleProjectDetail, onCloseModal, selectedProject } =
-    useProjectModal();
+  const {
+    projectList,
+    loading,
+    handleProjectDetail,
+    selectedProject,
+    resetSelected,
+  } = useProjects();
 
   if (loading) return <div>로딩주우웅!</div>;
   if (!projectList) return <div>서버에 문제 있음!</div>;
@@ -47,17 +52,8 @@ export default function Projects() {
         </div>
       ))}
 
-      {isModalOpen && selectedProject && (
-        <div className="bg-black text-white">
-          {selectedProject.title}
-
-          <button
-            onClick={onCloseModal}
-            className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
-          >
-            ×
-          </button>
-        </div>
+      {selectedProject && (
+        <Modal handleOnClose={resetSelected}>{selectedProject.title}</Modal>
       )}
     </div>
   );
