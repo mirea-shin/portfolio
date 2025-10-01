@@ -1,11 +1,16 @@
 import { BrowserRouter } from 'react-router-dom';
 import AdminRoutes from './routes';
+import { ThemeProvider } from 'styled-components';
+import { darkTheme, lightTheme } from 'shared';
 
 function App() {
+  const isDarkMode = true;
   return (
-    <BrowserRouter>
-      <AdminRoutes />
-    </BrowserRouter>
+    <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      <BrowserRouter>
+        <AdminRoutes />
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

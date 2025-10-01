@@ -1,5 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const PageWrapper = styled.div`
+  background: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
+`;
 
 export default function NotFoundPage() {
-  return <div className="bg-red-300">NotFoundPage!!! 우와ㅣ! ?</div>;
+  return <PageWrapper>흠냐리</PageWrapper>;
 }
