@@ -20,6 +20,8 @@ let FAKE_PROJECTS: Project[] = [
     ],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
+    thumbnail:
+      'https://images.unsplash.com/photo-1573867639040-6dd25fa5f597?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
     id: '2',
@@ -34,6 +36,8 @@ let FAKE_PROJECTS: Project[] = [
     ],
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
+    thumbnail:
+      'https://images.unsplash.com/photo-1573867639040-6dd25fa5f597?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ];
 

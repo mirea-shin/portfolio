@@ -7,13 +7,9 @@ const PageLayoutWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   min-width: 100%;
-`;
 
-export const MainWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.text};
 `;
 
 interface PageLayoutProps {

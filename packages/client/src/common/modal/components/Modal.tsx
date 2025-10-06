@@ -43,7 +43,7 @@ export default function Modal({
   if (!isOpen) return <></>;
 
   return (
-    <div className="bg-red-300">
+    <div className="bg-red-300 absolute ">
       <button
         onClick={() => {
           onClose();

@@ -1,5 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
-import PageLayout, { MainWrapper } from './PageLayout';
+import Main from './Main';
+import PageLayout from './PageLayout';
 
-export { Header, Footer, PageLayout, MainWrapper };
+export { Header, Footer, Main, PageLayout };

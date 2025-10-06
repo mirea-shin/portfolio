@@ -1817,6 +1817,15 @@ forwarded@0.2.0:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
   integrity sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
 
+framer-motion@^12.23.22:
+  version "12.23.22"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.22.tgz#798333fdcc5cd65fabfc450985b7236bbdbf5d64"
+  integrity sha512-ZgGvdxXCw55ZYvhoZChTlG6pUuehecgvEAJz0BHoC5pQKW1EC5xf1Mul1ej5+ai+pVY0pylyFfdl45qnM1/GsA==
+  dependencies:
+    motion-dom "^12.23.21"
+    motion-utils "^12.23.6"
+    tslib "^2.4.0"
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -2243,6 +2252,18 @@ minizlib@^3.1.0:
   dependencies:
     minipass "^7.1.2"
 
+motion-dom@^12.23.21:
+  version "12.23.21"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.21.tgz#1efe2d1bdda31875f0ee56d06f02be7b562a0bdd"
+  integrity sha512-5xDXx/AbhrfgsQmSE7YESMn4Dpo6x5/DTZ4Iyy4xqDvVHWvFVoV+V2Ri2S/ksx+D40wrZ7gPYiMWshkdoqNgNQ==
+  dependencies:
+    motion-utils "^12.23.6"
+
+motion-utils@^12.23.6:
+  version "12.23.6"
+  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.23.6.tgz#fafef80b4ea85122dd0d6c599a0c63d72881f312"
+  integrity sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -2442,6 +2463,11 @@ react-hook-form@^7.63.0:
   version "7.63.0"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.63.0.tgz#ff601754989bdd5cfc19fcbb02a3c0d4fbb29284"
   integrity sha512-ZwueDMvUeucovM2VjkCf7zIHcs1aAlDimZu2Hvel5C5907gUzMpm4xCrQXtRzCvsBqFjonB4m3x4LzCFI1ZKWA==
+
+react-icons@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.5.0.tgz#8aa25d3543ff84231685d3331164c00299cdfaf2"
+  integrity sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==
 
 react-is@^16.7.0:
   version "16.13.1"
