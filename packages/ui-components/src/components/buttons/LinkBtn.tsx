@@ -21,6 +21,9 @@ const Button = styled.button<BtnProps>`
     }
   }};
   margin: 0 0.5rem;
+  &:hover {
+    color: ${(props) => props.theme.colors.text};
+  }
 `;
 
 interface LinkBtnProps {

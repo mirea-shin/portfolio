@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import type { ProjectRequest } from 'shared';
+import { Button, Loading } from 'ui-components';
 
 import { useProjectForm } from '../hooks';
-import { Input, Textarea } from '../../../ui/form';
-import { BtnAction } from '../../../ui/buttons';
+import { FormElement, Input, Textarea } from '../../../ui/form';
 
 export default function ProjectForm() {
   const { loading, project, validation, onSubmit, onDelete } = useProjectForm();
@@ -39,13 +39,10 @@ export default function ProjectForm() {
     }
   }, [project, reset]);
 
-  if (loading) return <div> 로딩중,,,</div>;
+  if (loading) return <Loading />;
 
   return (
-    <form
-      onSubmit={handleSubmit((data) => onSubmit(data))}
-      className="max-w-4xl mx-auto p-6 shadow-md rounded-md space-y-6"
-    >
+    <form onSubmit={handleSubmit((data) => onSubmit(data))}>
       {/* 프로젝트명 */}
       <Input
         label="프로젝트명"
@@ -65,15 +62,17 @@ export default function ProjectForm() {
       {/* 상태 및 날짜 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block mb-1 font-medium text-gray-700">상태</label>
-          <select
-            {...register('status')}
-            className="border rounded w-full p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-          >
-            <option value="draft">초안</option>
-            <option value="ongoing">진행중</option>
-            <option value="completed">완료</option>
-          </select>
+          <FormElement name="status" label="상태">
+            <select
+              id="status"
+              {...register('status')}
+              className="border rounded w-full p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+              <option value="draft">초안</option>
+              <option value="ongoing">진행중</option>
+              <option value="completed">완료</option>
+            </select>
+          </FormElement>
         </div>
 
         {watch('status') === 'completed' && (
@@ -138,9 +137,11 @@ export default function ProjectForm() {
       {/* 버튼 */}
 
       <div className="flex justify-end gap-2">
-        {project && <BtnAction label="삭제" onClick={onDelete} color="red" />}
+        {project && (
+          <Button type="button" label="Delete" onClick={onDelete} border />
+        )}
 
-        <BtnAction type="submit" label="제출" color="blue" />
+        <Button type="submit" label="Submit" />
       </div>
     </form>
   );

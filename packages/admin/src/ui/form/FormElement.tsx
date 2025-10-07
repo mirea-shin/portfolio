@@ -12,7 +12,7 @@ export default function FormElement({
   children,
 }: FormElementProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-3">
       <label htmlFor={name} className="mb-2">
         {label}
       </label>

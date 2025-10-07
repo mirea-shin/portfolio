@@ -7,7 +7,7 @@ const MENU = [about, projects, experiences, contact];
 
 export default function Navigation() {
   const showActiveMenu = (isActive: boolean) =>
-    isActive ? 'text-pink-700' : 'text-neutral-600';
+    isActive ? 'text-pink-500' : '';
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function Navigation() {
           className={({ isActive }) => {
             return `${showActiveMenu(
               isActive
-            )} cursor-pointer mx-2.5 hover:text-gray-950 `;
+            )} cursor-pointer mx-2.5 transition delay-100 duration-200 ease-in-out hover:text-pink-400 text-sm`;
           }}
         >
           {el.title}

@@ -1,6 +1,8 @@
 import type { UseFormRegister } from 'react-hook-form';
 import { FormElement } from './index';
 
+import styled from 'styled-components';
+
 interface InputProps {
   label: string;
   name: string;
@@ -8,6 +10,10 @@ interface InputProps {
   required?: boolean;
   type?: string;
 }
+
+const InputWrapper = styled.input`
+  border: 1px solid ${(props) => props.theme.colors.text};
+`;
 
 export default function Input({
   label,
@@ -18,11 +24,11 @@ export default function Input({
 }: InputProps) {
   return (
     <FormElement name={name} label={label}>
-      <input
+      <InputWrapper
         id={name}
         type={type}
         {...register(name, { required })}
-        className="border border-red-300 p-2 focus:outline-none rounded-sm"
+        className="p-2 focus:outline-none rounded-sm"
       />
     </FormElement>
   );

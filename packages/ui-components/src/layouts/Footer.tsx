@@ -5,7 +5,7 @@ import { LinkBtn } from '../components';
 
 const FooterWrapper = styled.footer`
   background: ${(props) => props.theme.colors.background};
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.textSecondary};
 
   display: flex;
   justify-content: center;

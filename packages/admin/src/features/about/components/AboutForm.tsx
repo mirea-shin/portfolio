@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form';
 import useAboutDetail from '../hooks/useAboutDetail';
 import useAboutForm from '../hooks/useAboutForm';
 
+import { Button, Loading } from 'ui-components';
+
 import { Input, Textarea } from '../../../ui/form';
-import { BtnAction } from '../../../ui/buttons';
 
 import type { AboutRequest } from 'shared';
 
@@ -38,7 +39,7 @@ export default function AboutForm() {
     }
   }, [about, reset]);
 
-  if (loading) return <div>로딩ㅋ</div>;
+  if (loading) return <Loading />;
 
   return (
     <form
@@ -63,13 +64,9 @@ export default function AboutForm() {
         required={validation.content.required}
       />
       <div className="flex justify-end gap-2">
-        <BtnAction type="submit" label="제출" color="blue" />
+        <Button type="submit" label="Submit" />
         {about && (
-          <BtnAction
-            label="삭제"
-            onClick={() => onDelete(about.id)}
-            color="red"
-          />
+          <Button label="Delete" onClick={() => onDelete(about.id)} border />
         )}
       </div>
 

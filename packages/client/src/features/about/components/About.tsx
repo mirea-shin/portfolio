@@ -1,10 +1,13 @@
 import type { About } from 'shared';
+
+import { Loading } from 'ui-components';
+
 import useFeaturedAbout from '../hooks/useFeaturedAbout';
 
 export default function About() {
   const { featuredAbout, loading } = useFeaturedAbout();
 
-  if (loading) return <div>아직.. 로딩 중</div>;
+  if (loading) return <Loading />;
 
   if (!featuredAbout) return <div>등록된 머시가가 없음</div>;
 
