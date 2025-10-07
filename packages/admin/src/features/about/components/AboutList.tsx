@@ -1,9 +1,22 @@
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAbout } from '../hooks';
 
+import { IoIosSettings } from 'react-icons/io';
+
+import { BtnAdd } from '../../../ui/buttons';
+import { ENDPOINTS } from 'shared';
+
+const { ABOUT } = ENDPOINTS;
 // TODO featured 등록
 
 export default function AboutList() {
-  const { allAbout, loading, handleAboutClick } = useAbout();
+  const {
+    allAbout,
+    loading,
+    handleAboutClick,
+    showSettingBtns,
+    handleSettingBtn,
+  } = useAbout();
 
   if (loading) return <div>로딩중입니닷</div>;
 
@@ -11,25 +24,53 @@ export default function AboutList() {
     return <div>데이터가 없나 ㅋ? 서버 에러인가 ㅋ 어케 핸들링하지 ㅋ</div>;
 
   return (
-    <div>
-      AboutList
-      <div>
+    <div className="flex flex-col flex-4/5 min-h-10/12  w-4/5 items-center ">
+      <div className="flex flex-col gap-2 m-6 w-full h-full flex-1 border-5 border-blue-200 rounded-3xl overflow-hidden py-6 px-10">
+        <div className="flex gap-3">
+          <motion.button
+            className={`cursor-pointer text-3xl ease-in-out ${
+              showSettingBtns ? 'text-amber-200' : ''
+            }`}
+            onClick={handleSettingBtn}
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 1 }}
+          >
+            <IoIosSettings />
+          </motion.button>
+          {showSettingBtns && (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, x: 0 }}
+                animate={{ opacity: 1, x: 10 }}
+                transition={{ ease: 'easeInOut' }}
+                exit={{ opacity: 0 }}
+              >
+                <button className="cursor-pointer">default 설정</button>
+              </motion.div>
+            </AnimatePresence>
+          )}
+        </div>
         {allAbout.map((about) => (
           <div
             key={about.id}
-            className="border border-amber-300"
+            className="grid grid-cols-7 gap-x-2 rounded items-center border border-amber-300 cursor-pointer w-full transition delay-150 duration-300 ease-in-out  hover:scale-105 "
             onClick={() => handleAboutClick(about.id)}
           >
-            <div> {about.title}</div>
-            <div>
-              <div> {about.createdAt}</div>
-              <div> {about.updatedAt}</div>
+            <div className="flex justify-center">
+              <p>{about.isFeatured ? '🥰' : ''}</p>
             </div>
-            <div> {about.content}</div>
-            <div>{about.isFeatured ? '🥰' : ''}</div>
-            <div> content는 약간 줄여서 보여주면 되려나..?</div>
+
+            <div className=" col-span-2"> {about.title}</div>
+
+            <div className=" col-span-3"> {about.content}</div>
+            <div>
+              <p> {about.updatedAt || about.createdAt}</p>
+            </div>
           </div>
         ))}
+        <div className=" flex w-full h-full justify-center items-center my-2">
+          <BtnAdd path={ABOUT} />
+        </div>
       </div>
     </div>
   );

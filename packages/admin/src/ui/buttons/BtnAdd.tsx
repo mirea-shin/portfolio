@@ -13,9 +13,9 @@ export default function BtnAdd({ path }: BtnAddProps) {
   return (
     <button
       type="button"
-      className="cursor-pointer text-5xl rounded-full transition delay-150 duration-300 ease-in-out  hover:scale-110 hover:text-gray-500 ..."
+      className="cursor-pointer text-5xl rounded-full transition delay-150 duration-300 ease-in-out  hover:scale-110 hover:text-gray-500"
       onClick={() => {
-        navigate(path);
+        navigate(`${path}/new`);
       }}
     >
       <IoMdAdd />

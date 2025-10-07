@@ -36,13 +36,13 @@ export default function useProjectForm() {
   const onSubmit = async (data: ProjectRequest) => {
     try {
       setLoading(true);
-      if (!id) {
-        const result = await postProject(data);
-        console.log(result);
-      } else {
-        const result = await putProject(data, id);
-      }
-      // navigate('/projects');
+      if (!id) return;
+
+      const result =
+        id === 'new' ? await postProject(data) : await putProject(data, id);
+
+      console.log(result);
+      navigate('/projects');
     } catch (err) {
       console.error('errorr');
     } finally {

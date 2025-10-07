@@ -10,12 +10,14 @@ import type { About } from 'shared';
 export default function useAbout() {
   const [allAbout, setAllAbout] = useState<About[] | null>();
   const [loading, setLoading] = useState(false);
+  const [showSettingBtns, setShowSettingBtns] = useState(false);
 
   const navigate = useNavigate();
 
   const handleAboutClick = (id: string) => {
     navigate(`/about/${id}`);
   };
+  const handleSettingBtn = () => setShowSettingBtns((prev) => !prev);
 
   useEffect(() => {
     const fetchAllAbout = async () => {
@@ -31,5 +33,11 @@ export default function useAbout() {
     fetchAllAbout();
   }, []);
 
-  return { allAbout, loading, handleAboutClick };
+  return {
+    allAbout,
+    loading,
+    showSettingBtns,
+    handleAboutClick,
+    handleSettingBtn,
+  };
 }

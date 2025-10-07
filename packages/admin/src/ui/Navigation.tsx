@@ -2,15 +2,12 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 import { about, projects, experiences, contact } from 'shared';
-import { withTheme } from 'styled-components';
 
 const MENU = [about, projects, experiences, contact];
 
 export default function Navigation() {
   const showActiveMenu = (isActive: boolean) =>
     isActive ? 'text-pink-700' : 'text-neutral-600';
-
-  console.log(withTheme);
 
   return (
     <div>
