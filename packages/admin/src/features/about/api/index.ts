@@ -18,5 +18,5 @@ export const putAbout = async (editedAbout: AboutRequest, id: string) =>
 export const deleteAbout = async (id: string) =>
   await apiAdmin.delete(`${ABOUT}/${id}`);
 
-export const upadteFeaturedAbout = async (id: number) =>
-  await apiAdmin.patch(`${ABOUT}/${id}`);
+export const upadteFeaturedAbout = async (id: string) =>
+  await apiAdmin.patch(`${ABOUT}/${id}/select`);

@@ -2,15 +2,28 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
+import { motion } from 'framer-motion';
+
+import styled from 'styled-components';
+
 import useAboutDetail from '../hooks/useAboutDetail';
 import useAboutForm from '../hooks/useAboutForm';
-
 import { Button, Loading } from 'ui-components';
 
 import { Input, Textarea } from '../../../ui/form';
 
 import type { AboutRequest } from 'shared';
 
+const CheckBox = styled(motion.input)`
+  border: ${(props) => props.theme.colors.text} 1px solid;
+  &:checked {
+    background: ${(props) => props.theme.colors.text};
+  }
+`;
+
+interface Temp {
+  isFeatured: boolean;
+}
 export default function AboutForm() {
   const { id } = useParams();
 
@@ -20,8 +33,11 @@ export default function AboutForm() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
-  } = useForm<AboutRequest>();
+  } = useForm<AboutRequest & Temp>();
+
+  const isFeaturedValue = watch('isFeatured'); // 현재 값 감시
 
   const {
     onSubmit,
@@ -33,6 +49,7 @@ export default function AboutForm() {
   useEffect(() => {
     if (about) {
       reset({
+        isFeatured: about.isFeatured,
         title: about.title,
         content: about.content,
       });
@@ -46,43 +63,82 @@ export default function AboutForm() {
       onSubmit={handleSubmit((data) =>
         onSubmit(data, about?.id ? about.id : null)
       )}
-      className="w-4xl border rounded-md  p-6 space-y-6 mx-auto"
+      className="w-4xl border rounded-md  p-6 space-y-8 mx-auto shadow-2xl "
     >
-      {/* 타이틀명 */}
-      <Input
-        label="title"
-        name="title"
-        register={register}
-        required={validation.title.required}
-      />
+      {/* 대표어바웃 */}
+      <div className="flex flex-col gap-3 relative">
+        <div className="flex items-center gap-2 relative">
+          <CheckBox
+            type="checkbox"
+            id="isFeatured"
+            {...register('isFeatured')}
+            className={`appearance-none w-5 h-5 rounded transition-all duration-150 ${
+              about && about.isFeatured
+                ? 'cursor-not-allowed'
+                : 'cursor-pointer'
+            } `}
+            whileTap={{ scale: 0.9 }}
+            checked={isFeaturedValue} // controlled
+            disabled={isFeaturedValue}
+          />
+          <label htmlFor="isFeatured" className="text-xl">
+            Featured About
+          </label>
+        </div>
+        {!(about && about.isFeatured) && (
+          <div className="absolute bottom-6 text-xs left-8">
+            <p className=" text-blue-500">
+              Feature About 선택 시 기존 About 대체 됩나다.
+            </p>
+          </div>
+        )}
 
-      {/* 콘텐트 */}
-      <Textarea
-        label="설명"
-        name="description"
-        register={register}
-        required={validation.content.required}
-      />
-      <div className="flex justify-end gap-2">
-        <Button type="submit" label="Submit" />
         {about && (
-          <Button label="Delete" onClick={() => onDelete(about.id)} border />
+          <div className="flex justify-between">
+            <div> 생성일 : {about.createdAt}</div>
+
+            {about.updatedAt && <div> 수정일 : {about.updatedAt}</div>}
+          </div>
         )}
       </div>
 
-      {errors.content && <div>콘텐트 필수값입니다 ^^..</div>}
-      {errors.title && <div>제목 필수값입니다 ^^..</div>}
+      {/* 타이틀명 */}
+      <div className="relative">
+        <Input
+          label="Title"
+          name="title"
+          register={register}
+          required={validation.title.required}
+        />
+        {errors.title && (
+          <p className="absolute text-xs text-red-600 -bottom-5">
+            Title is required
+          </p>
+        )}
+      </div>
 
-      {about && (
-        <div>
-          <div className="flex justify-between">
-            <div> 생성일 : {about.createdAt}</div>
-            <div> 수정일 : {about.updatedAt}</div>
-          </div>
+      {/* 콘텐트 */}
+      <div className="relative">
+        <Textarea
+          label="Content"
+          name="content"
+          register={register}
+          required={validation.content.required}
+        />
+        {errors.content && (
+          <p className="absolute text-xs text-red-600 -bottom-5">
+            Content is required
+          </p>
+        )}
+      </div>
 
-          <div>{about.isFeatured ? '🥰' : ''}</div>
-        </div>
-      )}
+      {/* 버튼 */}
+      <div className="flex justify-end gap-2">
+        {about && !about.isFeatured && (
+          <Button label="Delete" onClick={() => onDelete(about.id)} border />
+        )}
+        <Button type="submit" label="Submit" />
+      </div>
     </form>
   );
 }

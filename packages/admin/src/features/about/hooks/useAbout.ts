@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getAllAbout } from '../api';
+import { getAllAbout, upadteFeaturedAbout } from '../api';
 
 import type { About } from 'shared';
 
@@ -10,34 +10,49 @@ import type { About } from 'shared';
 export default function useAbout() {
   const [allAbout, setAllAbout] = useState<About[] | null>();
   const [loading, setLoading] = useState(false);
-  const [showSettingBtns, setShowSettingBtns] = useState(false);
+  const [editingFeature, setEditingFeature] = useState(false);
 
   const navigate = useNavigate();
 
   const handleAboutClick = (id: string) => {
     navigate(`/about/${id}`);
   };
-  const handleSettingBtn = () => setShowSettingBtns((prev) => !prev);
+
+  const handleSettingBtn = () => setEditingFeature((prev) => !prev);
+
+  const fetchAllAbout = async () => {
+    try {
+      const result = await getAllAbout();
+      if (result.data) {
+        setAllAbout(result.data.data);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const editFeaturedAbout = async (id: string) => {
+    try {
+      const result = await upadteFeaturedAbout(id);
+      if (result) {
+        await fetchAllAbout();
+        setEditingFeature(false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   useEffect(() => {
-    const fetchAllAbout = async () => {
-      try {
-        const result = await getAllAbout();
-        if (result.data) {
-          setAllAbout(result.data.data);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
     fetchAllAbout();
   }, []);
 
   return {
     allAbout,
     loading,
-    showSettingBtns,
+    editingFeature,
     handleAboutClick,
     handleSettingBtn,
+    editFeaturedAbout,
   };
 }
