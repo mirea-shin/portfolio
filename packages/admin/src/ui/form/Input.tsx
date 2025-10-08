@@ -28,7 +28,7 @@ export default function Input({
         id={name}
         type={type}
         {...register(name, { required })}
-        className="p-2 focus:outline-none rounded-sm"
+        className="p-2 rounded-sm focus:outline-none shadow focus:bg-white transition-all duration-150"
       />
     </FormElement>
   );

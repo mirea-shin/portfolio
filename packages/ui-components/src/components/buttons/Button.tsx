@@ -37,6 +37,7 @@ export default function Button({
     <ButtnWrapper
       border={border}
       type={type}
+      whileTap={{ scale: 0.9 }}
       onClick={() => {
         if (onClick) {
           onClick();
