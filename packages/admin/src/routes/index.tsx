@@ -7,7 +7,7 @@ import {
   ProjectsDetailPage,
 } from '../pages';
 
-import Layout from '../ui/Layout';
+import { Layout } from '../ui/layouts';
 
 export default function AdminRoutes() {
   return (

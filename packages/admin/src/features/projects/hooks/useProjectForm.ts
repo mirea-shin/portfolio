@@ -10,8 +10,11 @@ export default function useProjectForm() {
   const navigate = useNavigate();
 
   const { id } = useParams();
+
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(false);
+  const [mediaList, setMediaList] = useState<File[] | null>(null);
+  const [mainMedia, setMainMedia] = useState<number>(0);
 
   const validation = {
     title: {
@@ -67,11 +70,33 @@ export default function useProjectForm() {
     }
   };
 
+  const handleMediaList = (files: File[]) => {
+    if (files.length > 6) {
+      return;
+    }
+
+    setMediaList(files);
+  };
+
+  const handleMainMedia = (idx) => {
+    setMainMedia(idx);
+  };
+
   useEffect(() => {
     if (id && id !== 'new') {
       fetchProject(id);
     }
   }, [id]);
 
-  return { loading, project, validation, onSubmit, onDelete };
+  return {
+    loading,
+    project,
+    validation,
+    mediaList,
+    mainMedia,
+    onSubmit,
+    onDelete,
+    handleMediaList,
+    handleMainMedia,
+  };
 }

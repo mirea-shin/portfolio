@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Navigation from './Navigation';
+import Navigation from '../Navigation';
 import { PageLayout, Header, Footer, Main } from 'ui-components';
 
 import { Outlet } from 'react-router-dom';

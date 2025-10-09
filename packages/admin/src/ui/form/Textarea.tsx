@@ -10,6 +10,7 @@ interface TextareaProps {
   register: UseFormRegister<any>;
   required?: boolean;
   className?: string;
+  error?: boolean;
 }
 
 const TextAreaWrapper = styled.textarea`
@@ -22,6 +23,7 @@ export default function Textarea({
   register,
   required,
   className,
+  error,
 }: TextareaProps) {
   const [isComposing, setIsComposing] = useState(false);
 
@@ -47,7 +49,7 @@ export default function Textarea({
   };
 
   return (
-    <FormElement name={name} label={label}>
+    <FormElement name={name} label={label} error={error}>
       <TextAreaWrapper
         id={name}
         {...register(name, { required })}

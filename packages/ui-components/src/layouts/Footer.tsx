@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { LinkBtn } from '../components';
 
+// position: sticky;
+
 const FooterWrapper = styled.footer`
   background: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors.textSecondary};
@@ -11,7 +13,6 @@ const FooterWrapper = styled.footer`
   justify-content: center;
   align-items: center;
 
-  position: sticky;
   bottom: 0;
   width: 100%;
   height: 3rem;

@@ -2,10 +2,12 @@ import React from 'react';
 
 import { AboutForm } from '../../features/about';
 
+import { DetailPageLayout } from '../../ui/layouts';
+
 export default function AboutDetailPage() {
   return (
-    <div className=" flex-1 w-full flex justify-center items-center ">
+    <DetailPageLayout>
       <AboutForm />
-    </div>
+    </DetailPageLayout>
   );
 }

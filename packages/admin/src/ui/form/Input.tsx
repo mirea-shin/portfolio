@@ -9,6 +9,7 @@ interface InputProps {
   register: UseFormRegister<any>;
   required?: boolean;
   type?: string;
+  error?: boolean;
 }
 
 const InputWrapper = styled.input`
@@ -21,9 +22,10 @@ export default function Input({
   register,
   required,
   type = 'text',
+  error,
 }: InputProps) {
   return (
-    <FormElement name={name} label={label}>
+    <FormElement name={name} label={label} error={error}>
       <InputWrapper
         id={name}
         type={type}

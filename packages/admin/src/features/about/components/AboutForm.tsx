@@ -58,6 +58,8 @@ export default function AboutForm() {
 
   if (loading) return <Loading />;
 
+  console.log(errors);
+
   return (
     <form
       onSubmit={handleSubmit((data) =>
@@ -103,34 +105,22 @@ export default function AboutForm() {
       </div>
 
       {/* 타이틀명 */}
-      <div className="relative">
-        <Input
-          label="Title"
-          name="title"
-          register={register}
-          required={validation.title.required}
-        />
-        {errors.title && (
-          <p className="absolute text-xs text-red-600 -bottom-5">
-            Title is required
-          </p>
-        )}
-      </div>
+      <Input
+        label="Title"
+        name="title"
+        register={register}
+        required={validation.title.required}
+        error={!!errors.title}
+      />
 
       {/* 콘텐트 */}
-      <div className="relative">
-        <Textarea
-          label="Content"
-          name="content"
-          register={register}
-          required={validation.content.required}
-        />
-        {errors.content && (
-          <p className="absolute text-xs text-red-600 -bottom-5">
-            Content is required
-          </p>
-        )}
-      </div>
+      <Textarea
+        label="Content"
+        name="content"
+        register={register}
+        required={validation.content.required}
+        error={!!errors.content}
+      />
 
       {/* 버튼 */}
       <div className="flex justify-end gap-2">
